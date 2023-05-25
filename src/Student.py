@@ -1,5 +1,6 @@
 from Course import Course
 import JsonTools
+import time
 
 class Student(Course):
     def __init__(self, course_code: str, course_name: str, firstname: str, lastname: str, student_id: int, mark: int, assignments: dict) -> None:
@@ -16,18 +17,30 @@ class Student(Course):
             master_dict[course_code.upper()] = {}
 
         master_dict[course_code.upper()][f'{self.firstname} {self.lastname}'] = {
+            "first_name": self.firstname,
+            "last_name": self.lastname,
             "id": self.student_id,
             "mark": self.mark,
             "assignments": self.assignments
         }
 
-        JsonTools.write_data(master_dict)
+        JsonTools.write_data(master_dict) # Leave it to the garbage collector to delete master_dict after the constructor is done
     
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.firstname} {self.lastname} has a {self.mark}% in {self.course_name}.'
+    
+    def remove(self) -> None:
+        master_dict = JsonTools.load_data()
+    
+        if f'{self.firstname} {self.lastname}' in master_dict[self.course_code.upper()]:
+            del master_dict[self.course_code.upper()][f'{self.firstname} {self.lastname}']
+        else:
+            print("Student and/or course does not exist in json!")
+        
+        JsonTools.write_data(master_dict)
+            
 
-student1 = Student("ICS4U", "Grade 12 CS", "Kelvin", "Hall", 1234567, 98, {"Assignment 1": 98, "Assignment 2": 95})
-print(student1)
+
 
     
         
