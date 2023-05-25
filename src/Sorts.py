@@ -5,7 +5,7 @@ selected_course will be a string containing course code of course selected in UI
 
 Dictionary is nested as such: master_dict will contain multiple dictionaries for each course (named by their course code) which can be dynamically added through UI
 Each course dictionary will have x number of individual student dictionaries (named by their first and last name) which can also be dynamically added through UI
-Each student dictionary will contain misc student info (first/last name, grade, etc) as well as another dictionary with all their assignments and respective marks (can be dynamically added through UI)
+Each student dictionary will contain misc student info (first/last name, Grade, etc) as well as another dictionary with all their assignments and respective marks (can be dynamically added through UI)
 
 This file contains various sort methods for:
 	- Sorting by first or last name alphabetically
@@ -16,28 +16,31 @@ This file contains various sort methods for:
 master_dict = {
 	"ICS4U1": {
 		"Kelvin Hall": {
-			"first_name": "Kelvin",
-			"last_name": "Hall",
-			"grade": 12,
-			"student_marks": {
+			"Student ID": 362981425,
+			"First name": "Kelvin",
+			"Last name": "Hall",
+			"Grade": 12,
+			"Student marks": {
 				"first_assignment": 97,
 				"second_assignment": 91
 			}
 		},
 		"Minh Nguyen": {
-			"first_name": "Minh",
-			"last_name": "Hall",
-			"grade": 12,
-			"student_marks": {
+			"Student ID": 363084575,
+			"First name": "Minh",
+			"Last name": "Nguyen",
+			"Grade": 12,
+			"Student marks": {
 				"first_assignment": 78,
 				"second_assignment": 81
 			}
 		},
 		"Nathan Hellems": {
-			"first_name": "Nathan",
-			"last_name": "Hellems",
-			"grade": 12,
-			"student_marks": {
+			"Student ID": 339354771,
+			"First name": "Nathan",
+			"Last name": "Hellems",
+			"Grade": 12,
+			"Student marks": {
 				"first_assignment": 88,
 				"second_assignment": 90
 			}
@@ -45,28 +48,31 @@ master_dict = {
 	},
 	"ENG4U": {
 		"Kelvin Hall": {
-			"first_name": "Kelvin",
-			"last_name": "Hall",
-			"grade": 12,
-			"student_marks": {
+			"Student ID": 362981425,
+			"First name": "Kelvin",
+			"Last name": "Hall",
+			"Grade": 12,
+			"Student marks": {
 				"first_assignment": 107,
 				"second_assignment": 102
 			}
 		},
 		"Minh Nguyen": {
-			"first_name": "Minh",
-			"last_name": "Hall",
-			"grade": 12,
-			"student_marks": {
+			"Student ID": 363084575,
+			"First name": "Minh",
+			"Last name": "Nguyen",
+			"Grade": 12,
+			"Student marks": {
 				"first_assignment": 68,
 				"second_assignment": 73
 			}
 		},
 		"Nathan Hellems": {
-			"first_name": "Nathan",
-			"last_name": "Hellems",
-			"grade": 12,
-			"student_marks": {
+			"Student ID": 339354771,
+			"First name": "Nathan",
+			"Last name": "Hellems",
+			"Grade": 12,
+			"Student marks": {
 				"first_assignment": 93,
 				"second_assignment": 79
 			}
@@ -74,8 +80,7 @@ master_dict = {
 	}
 }
 
-selected_student = input("Pick student to sort ")
+# selected_student = input("Pick student to sort ")
 
-master_list = list(master_dict.items())
-sorted_marks = sorted(master_list, key=lambda x: x[1][selected_student]["student_marks"]["first_assignment"])
+sorted_marks = sorted(master_dict.items(), key=lambda x: x[1]["Kelvin Hall"]["Student marks"])
 print(sorted_marks)
