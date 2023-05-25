@@ -14,6 +14,7 @@ This file contains various sort methods for:
 	- Sorting individual student's assignment marks
 """
 from operator import getitem
+from statistics import mean, median
 
 selected_course = "ENG4U"
 selected_student = "Kelvin Hall"
@@ -59,7 +60,8 @@ master_dict = {
 			"Grade": 12,
 			"Student marks": {
 				"first_assignment": 107,
-				"second_assignment": 102
+				"second_assignment": 102,
+				"third_assignment": 69
 			}
 		},
 		"Minh Nguyen": {
@@ -85,11 +87,12 @@ master_dict = {
 	}
 }
 
-
 print(sorted(master_dict[selected_course][selected_student]["Student marks"].items(), key = lambda x: x[1], reverse = sort_reverse)) # Sorts selected student's marks
-
 
 print(sorted(master_dict[selected_course].items(), key = lambda x: getitem(x[1], "Last name"), reverse = sort_reverse)) # Sorts selected course's students by last name
 
-
 print(sorted(master_dict[selected_course].items(), key = lambda x: getitem(x[1], "First name"), reverse = sort_reverse)) # Sorts selected course's students by first name
+
+print(mean(master_dict[selected_course][selected_student]["Student marks"].values())) # Calculates average mark for selected student
+
+print(median(master_dict[selected_course][selected_student]["Student marks"].values())) # Calculates median mark for selected student
