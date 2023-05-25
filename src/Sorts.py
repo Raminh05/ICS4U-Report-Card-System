@@ -13,6 +13,9 @@ This file contains various sort methods for:
 	- Sorting individual student's assignment marks
 """
 
+selected_course = "ENG4U"
+selected_student = "Kelvin Hall"
+
 master_dict = {
 	"ICS4U1": {
 		"Kelvin Hall": {
@@ -80,7 +83,8 @@ master_dict = {
 	}
 }
 
-# selected_student = input("Pick student to sort ")
+print(sorted(master_dict[selected_course][selected_student]["Student marks"].items(), key = lambda x: x[1])) # Sorts selected student's marks in ascending order
 
-sorted_marks = sorted(master_dict.items(), key=lambda x: x[1]["Kelvin Hall"]["Student marks"])
-print(sorted_marks)
+print(sorted(master_dict[selected_course][selected_student]["Student marks"].items(), key = lambda x: x[1], reverse = True)) # Sorts selected student's marks in descending order
+
+print(sorted(master_dict[selected_course].items(), key = lambda x: x[1])) # Sorts selected course's students in alphabetically ascending order
