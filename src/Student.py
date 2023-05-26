@@ -9,9 +9,10 @@ class Student(Course):
         self.firstname = firstname
         self.lastname = lastname
         self.student_id = student_id
-        self.mark = None # No mark at first initialization
         self.assignments = assignments
-        self.add() # Add student to json database upon initialization of the object
+        self.mark = None # No mark at first initialization
+        self.average()   # Check if there are any assignments entered at the same as the initialization of the student object
+        self.add()       # Add student to json database upon initialization of the object
 
     # Add or append student information in json database
     def add(self) -> None:
@@ -19,13 +20,13 @@ class Student(Course):
         master_dict = JsonTools.load_data()
 
         # If student's course does not exist yet, add course to json
-        if self.course_code.upper() not in master_dict:
-            master_dict[self.course_code.upper()] = {}
-            master_dict[self.course_code.upper()]["class_average"] = None
-            master_dict[self.course_code.upper()]["students"] = {}
+        if self.course_code not in master_dict:
+            master_dict[self.course_code] = {}
+            master_dict[self.course_code]["class_average"] = None
+            master_dict[self.course_code]["students"] = {}
 
         # Add student to master dictionary as part of the constructor
-        master_dict[self.course_code.upper()]["students"][f'{self.firstname} {self.lastname}'] = {
+        master_dict[self.course_code]["students"][f'{self.firstname} {self.lastname}'] = {
             "first_name": self.firstname,
             "last_name": self.lastname,
             "id": self.student_id,
@@ -40,7 +41,7 @@ class Student(Course):
         master_dict = JsonTools.load_data()
     
         if f'{self.firstname} {self.lastname}' in master_dict[self.course_code.upper()]:
-            del master_dict[self.course_code.upper()][f'{self.firstname} {self.lastname}']
+            del master_dict[self.course_code][f'{self.firstname} {self.lastname}']
         else:
             print("Student and/or course does not exist in json!")
         
@@ -50,11 +51,14 @@ class Student(Course):
     def add_assignment(self, assignment_name: str, assignment_mark: int) -> None:
         self.assignments[assignment_name] = assignment_mark
         self.average()
-        
+        self.add()
+
     # Calculate student's average and update class average at the same time
     def average(self) -> None:
-        self.mark = round(mean(self.assignments.values()))
-        self.add()
+        if len(self.assignments.values()) == 0:
+            self.mark = None
+        else:
+            self.mark = round(mean(self.assignments.values()))
         
     # Calcualte student's median
     def median(self) -> int:

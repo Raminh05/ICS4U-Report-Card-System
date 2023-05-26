@@ -1,19 +1,24 @@
 {
     "ICS4U": {
-        "Minh Nguyen": {
-            "id": 234234,
-            "mark": 93,
-            "assignments": {
-                "Assignment 1": 93,
-                "Assignment 2": 95
-            }
-        },
-        "Kelvin Hall": {
-            "id": 1234567,
-            "mark": 98,
-            "assignments": {
-                "Assignment 1": 98,
-                "Assignment 2": 95
+        "class_average": 72,
+        "students": {
+            "Minh Nguyen": {
+                "first_name": "Minh",
+                "last_name": "Nguyen",
+                "id": 363084575,
+                "mark": 94,
+                "assignments": {
+                    "Assignment 1": 94
+                }
+            },
+            "Kelvin Hall": {
+                "first_name": "Kelvin",
+                "last_name": "Hall",
+                "id": 362981425,
+                "mark": 49,
+                "assignments": {
+                    "Assignment 1": 49
+                }
             }
         }
     }
