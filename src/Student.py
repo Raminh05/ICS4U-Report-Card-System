@@ -1,6 +1,6 @@
 from Course import Course
 from statistics import mean, median
-import JsonTools, time
+import JsonTools
 
 ## -- Student subclass inherit course details from course class -- ##
 class Student(Course):
@@ -11,7 +11,7 @@ class Student(Course):
         self.student_id = student_id
         self.mark = None # No mark at first initialization
         self.assignments = assignments
-        self.add()
+        self.add() # Add student to json database upon initialization of the object
 
     # Add or append student information in json database
     def add(self) -> None:
@@ -21,9 +21,11 @@ class Student(Course):
         # If student's course does not exist yet, add course to json
         if self.course_code.upper() not in master_dict:
             master_dict[self.course_code.upper()] = {}
+            master_dict[self.course_code.upper()]["class_average"] = None
+            master_dict[self.course_code.upper()]["students"] = {}
 
         # Add student to master dictionary as part of the constructor
-        master_dict[self.course_code.upper()][f'{self.firstname} {self.lastname}'] = {
+        master_dict[self.course_code.upper()]["students"][f'{self.firstname} {self.lastname}'] = {
             "first_name": self.firstname,
             "last_name": self.lastname,
             "id": self.student_id,
@@ -49,21 +51,15 @@ class Student(Course):
         self.assignments[assignment_name] = assignment_mark
         self.average()
         
-    # Calculate student's average
-    def average(self) -> str:
-        self.mark = f'{round(mean(self.assignments.values()))}%'
+    # Calculate student's average and update class average at the same time
+    def average(self) -> None:
+        self.mark = round(mean(self.assignments.values()))
         self.add()
-
+        
     # Calcualte student's median
-    def median(self) -> str:
-        return f'{median(self.assignments.values())}%'
+    def median(self) -> int:
+        return median(self.assignments.values())
     
     # Method to represent the student object as a string
     def __str__(self) -> str:
-        return f'{self.firstname} {self.lastname} has a {self.mark} in {self.course_name}.'
-
-student1 = Student("ICS4U", "Grade 12 CS", "Kelvin", "Hall", 362981425, {})
-student1.add_assignment("Assignment 1", 94)
-student1.add_assignment("Assignment 2", 90)
-     
-print(student1)
+        return f'{self.firstname} {self.lastname} has a {self.mark}% in {self.course_name}.'
