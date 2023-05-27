@@ -1,8 +1,10 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QTableView, QTableWidget, QTableWidgetItem
 import sys
 from Student import Student
+
 #Allows for command line arguments
 app = QApplication(sys.argv)
+
 #Class for the main window
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -23,7 +25,7 @@ class MainWindow(QMainWindow):
         studentGrade = QTableWidgetItem("50" + "%")
     #Class information
         classCode = QLabel("temp class code")
-        classAverage = QLabel("temp average")
+        classAverage = QLabel("Class Average:" + " temp average")
     #Layout of the page
         primaryLayout = QVBoxLayout()
         secondaryLayout = QHBoxLayout()
@@ -54,15 +56,51 @@ class MainWindow(QMainWindow):
     def studentWindow(self, checked):
         self.w2 = studentView()
         self.w2.show()
+
 #Student view window
 class studentView(QWidget):
-    def __innit__(self):
-        super().__innit__()
+    def __init__(self):
+        super().__init__()
         self.setWindowTitle("Student View")
-        layout = QVBoxLayout()
-        presentLabel = QLabel("OH My GOD")
-        layout.addWidget(presentLabel)
-        self.setLayout(layout)
+        assingmentTable = QTableWidget(10, 3)
+        studentSubject = QLabel("Temp Student Name")
+        subjectGrade = QLabel("Grade:" + " 50%")
+        returnButton = QPushButton("Return to class view")
+        addAssignment = QPushButton("Add Assignment")
+        halfLayout = QVBoxLayout()
+        topLayout = QHBoxLayout()
+        bottomLayout = QHBoxLayout()
+        topLayout.addWidget(studentSubject)
+        topLayout.addWidget(subjectGrade)
+        topLayout.addWidget(returnButton)
+        bottomLayout.addWidget(assingmentTable)
+        bottomLayout.addWidget(addAssignment)
+        halfLayout.addLayout(topLayout)
+        halfLayout.addLayout(bottomLayout)
+        self.setLayout(halfLayout)
+        returnButton.clicked.connect(self.closeButtonClick)
+        addAssignment.clicked.connect(self.openNewAssignment)
+    def closeButtonClick(self, checked):
+        self.w2 = studentView()
+        self.w2.close()
+    def openNewAssignment(self, checked):
+        self.w3 = addingAssignment()
+        self.w3.show()
+
+#Window for adding an assignment to a student
+class addingAssignment(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("New Assignment For Selected Student")
+        assignmentName = QLineEdit()
+        gradeAchieved = QLineEdit()
+        finalWindowLayout = QVBoxLayout()
+        assignmentName.setPlaceholderText("Assignment Name")
+        gradeAchieved.setPlaceholderText("Grade Achieved")
+        finalWindowLayout.addWidget(assignmentName)
+        finalWindowLayout.addWidget(gradeAchieved)
+        self.setLayout(finalWindowLayout)
+
 
 #Windows are hidden by default and must be told to show up
 w = MainWindow()
