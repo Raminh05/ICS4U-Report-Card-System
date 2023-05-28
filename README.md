@@ -13,7 +13,7 @@
 - Custom everything
 
 ## Progress
-- [*] Backend implementation for data structure
+- [ ] Backend implementation for data structure
 - [ ] Implmentation of XML database to save student information
 - [ ] Setup a basic GUI for data viewing and entrance
 
