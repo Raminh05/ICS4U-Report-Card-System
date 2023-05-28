@@ -4,13 +4,13 @@
  Custom-made digital markbook solution made using PyQT for our final CS project :hot_face:
 
 ## Languages used
-- XML (for the database)
+- JSON (for the database)
 - Python (for everything else)
 
 ## Tools used
 - PyQT (graphical library)
-- Custom XML parser
-- Custom everything
+- Custom JSON parser
+- Custom everything else
 
 ## Progress
 - [x] Backend implementation for data structure
