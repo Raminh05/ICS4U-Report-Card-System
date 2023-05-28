@@ -1,23 +1,54 @@
 {
     "ICS4U": {
-        "class_average": 72,
-        "students": {
-            "Minh Nguyen": {
-                "first_name": "Minh",
-                "last_name": "Nguyen",
-                "id": 363084575,
-                "mark": 94,
-                "assignments": {
-                    "Assignment 1": 94
+        "Course name": "Grade 12 Computer Science",
+        "Teacher": "Jennifer Medd",
+        "Class average": null,
+        "Students": {
+            "Kelvin Hall": {
+                "First name": "Kelvin",
+                "Last name": "Hall",
+                "Student ID": 362981425,
+                "Mark": 95,
+                "Student marks": {
+                    "Assignment 1": 93,
+                    "Assignment 2": 97
                 }
             },
+            "Minh Nguyen": {
+                "First name": "Minh",
+                "Last name": "Nguyen",
+                "Student ID": 363084575,
+                "Mark": 98,
+                "Student marks": {
+                    "Assignment 1": 97,
+                    "Assignment 2": 99
+                }
+            }
+        }
+    },
+    "SCH4U": {
+        "Course name": "Grade 12 Chemistry",
+        "Teacher": "Patrick Crewdson",
+        "Class average": 64,
+        "Students": {
             "Kelvin Hall": {
-                "first_name": "Kelvin",
-                "last_name": "Hall",
-                "id": 362981425,
-                "mark": 49,
-                "assignments": {
-                    "Assignment 1": 49
+                "First name": "Kelvin",
+                "Last name": "Hall",
+                "Student ID": 362981425,
+                "Mark": 85,
+                "Student marks": {
+                    "Catalyst in Industry": 85,
+                    "Equilibrium Test": 85
+                }
+            },
+            "Minh Nguyen": {
+                "First name": "Minh",
+                "Last name": "Nguyen",
+                "Student ID": 363084575,
+                "Mark": 44,
+                "Student marks": {
+                    "Catalyst in Industry": 0,
+                    "Equilibrium Test": 89
                 }
             }
         }
