@@ -1,30 +1,35 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow, QLineEdit, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel, QComboBox, QTableWidget, QTableWidgetItem, QStackedLayout
 import sys
+from People import Student
+from JsonTools import load_data
+from DecryptJson import decrypt_json
 
 #Allows for command line arguments
 app = QApplication(sys.argv)
+
+master_dict = decrypt_json(load_data())
 
 #Class for the main window
 class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
-    #Set the window title
+
+        ## -- WINDOW PARAMETERS -- ##
+        #Set the window title
         self.setWindowTitle("Temporary")
-    #Making the Table
-        tableWidget = QTableWidget(10, 6)
+
+        ## -- UI ELEMENTS -- ##
+        #Setting up drop down of classes
+        classList = QComboBox()
+        
+        for course in list(master_dict.keys()):
+            classList.addItem(f'{course}')
+
+    #Making the Table (HARDCODED)
+        tableWidget = QTableWidget(len(master_dict["ICS4U"].students), 6)
     #Return to class selection
         exitButton = QPushButton("Return to class selection")
-    #Delete buttons
-        deleteButton = QPushButton("Delete Student")
-    #View buttons
-        viewButton = QPushButton("View Student")
-    #Student name
-        studentFirstName = QTableWidgetItem(" " + "Nathan" + " ")
-        studentLastName = QTableWidgetItem(" " + "Hellems" + " ")
-    #Student number
-        studentNumber = QTableWidgetItem("354339771")
-    #Student Grade
-        studentGrade = QTableWidgetItem("100" + "%")
+    
     #Class information
         classCode = QLabel("temp class code")
         classAverage = QLabel("Class Average:" + " temp average")
@@ -62,39 +67,58 @@ class MainWindow(QMainWindow):
         classWindow.setLayout(primaryLayout)
         self.stacklayout.addWidget(homeWindow)
         self.stacklayout.addWidget(classWindow)
-    #Adding delete buttons
-        tableWidget.setCellWidget(0, 0, deleteButton)
-    #Adding View Buttons
-        tableWidget.setCellWidget(0, 1, viewButton)
-    #adding student number
-        tableWidget.setItem(0, 2, studentNumber)
-    #Adding student first name
-        tableWidget.setItem(0, 3, studentFirstName)
-    #Adding student last name
-        tableWidget.setItem(0, 4, studentLastName)
-    #Adding student average
-        tableWidget.setItem(0, 5, studentGrade)
-    #Resizing the table around contents
-        tableWidget.resizeColumnToContents(2)
-        tableWidget.resizeColumnToContents(3)
-        tableWidget.resizeColumnToContents(4)
-        tableWidget.resizeColumnToContents(5)
-    #Making the student view pop-up appear
-        viewButton.clicked.connect(self.studentWindow)
+
+    #Adding delete buttons (HARDCODED)
+        for count, student in enumerate(master_dict["ICS4U"].students):
+            #Delete buttons
+            deleteButton = QPushButton("Delete Student")
+        #View buttons
+            viewButton = QPushButton(f'View Student')
+            #Student name
+            studentFirstName = QTableWidgetItem(student.firstname)
+            studentLastName = QTableWidgetItem(" " + student.lastname + " ")
+        #Student number
+            studentNumber = QTableWidgetItem(f'{student.id}')
+        #Student Grade
+            studentGrade = QTableWidgetItem(f'{student.mark}%')
+
+            tableWidget.setCellWidget(count, 0, deleteButton)
+        #Adding View Buttons
+            tableWidget.setCellWidget(count, 1, viewButton)
+        #adding student number
+            tableWidget.setItem(count, 2, studentNumber)
+        #Adding student first name
+            tableWidget.setItem(count, 3, studentFirstName)
+        #Adding student last name
+            tableWidget.setItem(count, 4, studentLastName)
+        #Adding student average
+            tableWidget.setItem(count, 5, studentGrade)
+
+        #Resizing the table around contents
+            tableWidget.resizeColumnToContents(0)
+            tableWidget.resizeColumnToContents(1)
+            tableWidget.resizeColumnToContents(2)
+            tableWidget.resizeColumnToContents(3)
+            tableWidget.resizeColumnToContents(4)
+            tableWidget.resizeColumnToContents(5)
+
+            #Making the student view pop-up appear
+            viewButton.clicked.connect(lambda student_option, student=student: self.studentWindow(student))
+
 
     #Home Screen Stuff
         homeWindowLayout = QVBoxLayout()
-        mainTitle = QLabel("Temporary Title")
+        mainTitle = QLabel("Quirky Python Report Card System")
     #Add Class Button
         addClass = QPushButton("New Class")
-    #Setting up drop down of classes
-        classList = QComboBox()
-        classList.addItems(["No Selection", "First", "Second", "Third"])
+    
+        
     #Adding Widgets to the screen
         homeWindowLayout.addWidget(mainTitle)
         homeWindowLayout.addWidget(classList)
         homeWindowLayout.addWidget(addClass)
         homeWindow.setLayout(homeWindowLayout)
+
     #Calling the class selection method
         classList.currentTextChanged.connect(self.classSelection)
     
@@ -108,14 +132,14 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
 #Using the Class Selection
     def classSelection(self, i):
-        print(i)
+        print(master_dict[i])
         self.stacklayout.setCurrentIndex(1)
 #Showing the student view
-    def studentWindow(self, checked):
-        self.w2 = studentView()
+    def studentWindow(self, student_object: Student):
+        self.w2 = studentView(student_object)
         self.w2.show()
 #Showing new student window
-    def addNewStudent(self, checked):
+    def addNewStudent(self):
         self.w4 = addingStudent()
         self.w4.show()
 #Returning to the main screen
@@ -127,27 +151,45 @@ class MainWindow(QMainWindow):
 
 #Student view window
 class studentView(QWidget):
-    def __init__(self):
+    def __init__(self, student_object: Student):
         super().__init__()
+        self.student_object = student_object
         self.setWindowTitle("Student View")
-    #Table for the assignments
-        assignmentTable = QTableWidget(10, 3)
-    #Chosen student display
-        studentSubject = QLabel("Student: " + "Temp Student Name")
-    #Student's grade
-        subjectGrade = QLabel("Grade:" + " 50%")
-    #New assignment
+
+        print(student_object)
+
+        # Keys (assignment names) pulled from the assignment dictionary
+        assignment_keys = list(student_object.assignments.keys())
+
+        #Table for the assignments
+        assignmentTable = QTableWidget(len(assignment_keys), 3)
+
+        #Chosen student display
+        studentSubject = QLabel(f'Student: {student_object.firstname} {student_object.lastname}')
+
+        #Student's grade
+        subjectGrade = QLabel(f'Average: {student_object.mark}%')
+
+        #New assignment
         addAssignment = QPushButton("Add Assignment")
         addAssignment.clicked.connect(self.openNewAssignment)
-    #Delete assignment
-        deleteAssignment = QPushButton("Delete")
-        assignmentTable.setCellWidget(0, 0, deleteAssignment)
-    #Assignment name
-        assignmentName = QTableWidgetItem("Group Project")
-        assignmentTable.setItem(0, 1, assignmentName)
-    #Grade achieved
-        gradeAchieved = QTableWidgetItem("110" + "%")
-        assignmentTable.setItem(0, 2, gradeAchieved)
+
+        for count, assignment in enumerate(assignment_keys):
+            #Delete assignment
+            deleteAssignment = QPushButton("Delete")
+            assignmentTable.setCellWidget(count, 0, deleteAssignment)
+
+            #Assignment name
+            assignmentName = QTableWidgetItem(assignment)
+            assignmentTable.setItem(count, 1, assignmentName)
+
+            #Grade achieved
+            gradeAchieved = QTableWidgetItem(f'{student_object.assignments[assignment]}%')
+            assignmentTable.setItem(count, 2, gradeAchieved)
+
+            deleteAssignment.clicked.connect(lambda assignment_options, assignment=assignment: student_object.remove_assignment(assignment))
+            
+    
     #Layout of window
         halfLayout = QVBoxLayout()
         topLayout = QHBoxLayout()

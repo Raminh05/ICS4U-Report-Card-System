@@ -19,7 +19,7 @@ class Student(Person):
 		super().__init__(firstname, lastname)
 		self.id = id
 		self.assignments = assignments
-		self.mark = None # No mark at initialization
+		self.mark = 0 # No mark at initialization
 		self.average() # Calculate mark if there are assignments pre-loaded with student object
 	   
 	# Calculate student's average
