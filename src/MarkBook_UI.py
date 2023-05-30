@@ -174,21 +174,20 @@ class studentView(QWidget):
         addAssignment = QPushButton("Add Assignment")
         addAssignment.clicked.connect(self.openNewAssignment)
 
-        for count, assignment in enumerate(assignment_keys):
-            #Delete assignment
-            deleteAssignment = QPushButton("Delete")
-            assignmentTable.setCellWidget(count, 0, deleteAssignment)
+		for count, assignment in enumerate(assignment_keys):
+			#Delete assignment
+			deleteAssignment = QPushButton("Delete")
+			assignmentTable.setCellWidget(count, 0, deleteAssignment)
 
-            #Assignment name
-            assignmentName = QTableWidgetItem(assignment)
-            assignmentTable.setItem(count, 1, assignmentName)
+			#Assignment name
+			assignmentName = QTableWidgetItem(assignment)
+			assignmentTable.setItem(count, 1, assignmentName)
 
-            #Grade achieved
-            gradeAchieved = QTableWidgetItem(f'{student_object.assignments[assignment]}%')
-            assignmentTable.setItem(count, 2, gradeAchieved)
+			#Grade achieved
+			gradeAchieved = QTableWidgetItem(f'{student_object.assignments[assignment]}%')
+			assignmentTable.setItem(count, 2, gradeAchieved)
 
-            deleteAssignment.clicked.connect(lambda assignment_options, assignment=assignment: student_object.remove_assignment(assignment))
-            
+			deleteAssignment.clicked.connect(lambda assignment_options, assignment=assignment: student_object.remove_assignment(assignment))
     
     #Layout of window
         halfLayout = QVBoxLayout()
