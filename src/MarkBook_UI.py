@@ -111,11 +111,11 @@ class MainWindow(QMainWindow):
         print(i)
         self.stacklayout.setCurrentIndex(1)
 #Showing the student view
-    def studentWindow(self, checked):
+    def studentWindow(self):
         self.w2 = studentView()
         self.w2.show()
 #Showing new student window
-    def addNewStudent(self, checked):
+    def addNewStudent(self):
         self.w4 = addingStudent()
         self.w4.show()
 #Returning to the main screen
@@ -165,7 +165,7 @@ class studentView(QWidget):
         assignmentTable.resizeColumnToContents(1)
         assignmentTable.resizeColumnToContents(2)
 #Opening new assignment window
-    def openNewAssignment(self, checked):
+    def openNewAssignment(self):
         self.w3 = addingAssignment()
         self.w3.show()
 
