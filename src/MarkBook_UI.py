@@ -206,7 +206,7 @@ class studentView(QWidget):
 		assignmentTable.resizeColumnToContents(1)
 		assignmentTable.resizeColumnToContents(2)
 #Opening new assignment window
-	def openNewAssignment(self, checked):
+	def openNewAssignment(self):
 		self.w3 = addingAssignment()
 		self.w3.show()
 
