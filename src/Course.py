@@ -1,6 +1,6 @@
-from People import Teacher, Student
+from src.People import Teacher, Student
 from statistics import mean, median
-from JsonTools import write_data, load_data
+from src.JsonTools import write_data, load_data
 
 # -- Class to store course data -- #
 class Course():
