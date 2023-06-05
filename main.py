@@ -1,6 +1,7 @@
 from src.JsonTools import load_data
 from src.DecryptJson import decrypt_json
 from InquirerPy import inquirer
+import src.Sorts
 import texttable, platform, os
 
 def clearConsole(): # Generic function to clear output console before running
@@ -28,7 +29,7 @@ def individual_student_table():
 	table.set_cols_dtype(["t", "t"])
 	table.set_cols_align(["c", "c"])
 	table.set_cols_valign(["m", "m"])
-	table.header(["Assignment name", "Mark"])
+	table.header(["Assignment", "Mark"])
 	assignments = master_dict["ICS4U"].students[0].assignments
 	for key in list(assignments.keys()):
 		table.add_row([key, assignments[key]])
