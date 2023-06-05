@@ -40,6 +40,12 @@ class Course():
 		del master_dict[self.course_code]
 		write_data(master_dict)
 	
+	def add_student(self) -> None:
+		firstname = input("Enter Student's First Name: ")
+		lastname = input("Enter Student's Last Name: ")
+		id = int(input("Enter Student's ID: "))
+		self.students.append(Student(firstname, lastname, id, {}))
+	
 	# Add an assignment to ALL students' assignment dictionary
 	def add_assignment(self, assignment_name: str) -> None:
 		for student in self.students:
@@ -51,6 +57,24 @@ class Course():
 		for student in self.students:
 			del student.assignments[assignment_name]
 			student.average()
+	
+	def class_view_action_list(self):
+		print("1. Add New Student\n2. View/Edit Student\n3. Delete Student From Class")
+
+		selected_action = inquirer.number(
+				message="What action do you want to do? (Enter in student's displayed list number)",
+				min_allowed = 1,
+				max_allowed = 3,
+				validate = EmptyInputValidator(),
+			).execute()
+		
+		match selected_action:
+			case "1":
+				self.add_student()
+			case "2":
+				pass
+			case "3":
+				pass
 	
 	# Fetches selected student object
 	def student_list_prompt(self) -> Student:
