@@ -11,21 +11,20 @@ def clearConsole(): # Generic function to clear output console before running
         os.system("cls")
 
 clearConsole()
-table = texttable.Texttable()
 master_dict = decrypt_json(load_data())
-table.set_deco(table.HEADER | table.HLINES | table.VLINES | table.BORDER)
 
 def course_table():
-	table.reset()
+	table = texttable.Texttable()
 	table.set_cols_dtype(["t", "t", "t", "t"])
 	table.set_cols_align(["c", "c", "c", "c"])
+	table.set_cols_valign(["m", "m", "m", "m"])
 	table.header(["Student ID", "First name", "Last name", "Course average"])
 	for student in master_dict["ICS4U"].students: # temporarily hardcoded course code
 		table.add_row([student.id, student.firstname, student.lastname, student.mark])
 	print(table.draw())
 
 def individual_student_table():
-	table.reset()
+	table = texttable.Texttable()
 	table.set_cols_dtype(["t", "t"])
 	table.set_cols_align(["c", "c"])
 	table.set_cols_valign(["m", "m"])
