@@ -11,12 +11,12 @@ def clearConsole():
 
 def course_table(selected_course: Course):
 	table = texttable.Texttable()
-	table.set_cols_dtype(["t", "t", "t", "t"])
-	table.set_cols_align(["c", "c", "c", "c"])
-	table.set_cols_valign(["m", "m", "m", "m"])
-	table.header(["Student ID", "First name", "Last name", "Course average"])
-	for student in selected_course.students:
-		table.add_row([student.id, student.firstname, student.lastname, student.mark])
+	table.set_cols_dtype(["t", "t", "t", "t", "t"])
+	table.set_cols_align(["c", "c", "c", "c", "c"])
+	table.set_cols_valign(["m", "m", "m", "m", "m"])
+	table.header(["", "Student ID", "First name", "Last name", "Course average"])
+	for count, student in enumerate(selected_course.students):
+		table.add_row([count, student.id, student.firstname, student.lastname, student.mark])
 	print(table.draw())
 
 def individual_student_table():
