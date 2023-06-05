@@ -1,6 +1,8 @@
 from src.People import Teacher, Student
 from statistics import mean, median
 from src.JsonTools import write_data, load_data
+from InquirerPy import inquirer
+from InquirerPy.validator import EmptyInputValidator
 
 # -- Class to store course data -- #
 class Course():
@@ -50,12 +52,26 @@ class Course():
 			del student.assignments[assignment_name]
 			student.average()
 	
+	# Fetches selected student object
+	def student_list_prompt(self) -> Student:
+		for count, student in enumerate(self.students):
+			print(f"{count}. {student.firstname} {student.lastname}")
+			
+		index = inquirer.number(
+			message="Which student do you want to select? (Enter in student's displayed list number)",
+			min_allowed = 0,
+			max_allowed = len(self.students) - 1,
+			validate = EmptyInputValidator(),
+		).execute()
+
+		return self.students[int(index)]
+	
 	# Calculate class average
 	def class_average(self) -> None:
 		sum = 0
 		for student in self.students:
 			sum += student.mark
-		self.average = round(sum / len(self.students))
+		self.average = round(sum / len(self.students), 1)
 
 			
 		

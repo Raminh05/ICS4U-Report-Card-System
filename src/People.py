@@ -27,7 +27,7 @@ class Student(Person):
 		if len(self.assignments.values()) == 0:
 			self.mark = None
 		else:
-			self.mark = round(mean(self.assignments.values()))
+			self.mark = round(mean(self.assignments.values()), 1)
 	
 	# "Local" student implementation of the add assignment function where details such as assignment grades can be adjusted for each student
 	def add_assignment(self, assignment_name: str, assignment_mark: int) -> None:
