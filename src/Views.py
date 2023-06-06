@@ -1,5 +1,5 @@
 import texttable, platform, os
-from src.Course import Course
+from src.Prompts import *
 
 # Generic function to clear output console before running
 def clearConsole(): 
@@ -9,7 +9,8 @@ def clearConsole():
     elif osType == "Windows":
         os.system("cls")
 
-def course_table(selected_course: Course):
+def course_table(selected_course):
+	clearConsole()
 	table = texttable.Texttable()
 	table.set_cols_dtype(["t", "t", "t", "t", "t"])
 	table.set_cols_align(["c", "c", "c", "c", "c"])
@@ -18,14 +19,16 @@ def course_table(selected_course: Course):
 	for count, student in enumerate(selected_course.students):
 		table.add_row([count, student.id, student.firstname, student.lastname, student.mark])
 	print(table.draw())
+	class_view_action_list(selected_course)
 
-def individual_student_table():
+def individual_student_table(student):
+	clearConsole()
 	table = texttable.Texttable()
 	table.set_cols_dtype(["t", "t"])
 	table.set_cols_align(["c", "c"])
 	table.set_cols_valign(["m", "m"])
 	table.header(["Assignment", "Mark"])
-	assignments = master_dict["ICS4U"].students[0].assignments
+	assignments = student.assignments
 	for key in list(assignments.keys()):
 		table.add_row([key, assignments[key]])
 	print(table.draw())
