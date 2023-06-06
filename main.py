@@ -4,15 +4,14 @@ from src.Prompts import *
 from src.Views import *
 import src.Sorts
 
-master_dict = decrypt_json(load_data())
-clearConsole()
-
 def main():
+	clearConsole()
+	master_dict = decrypt_json(load_data())
 	selected_class = class_selection(master_dict)
 	course_table(selected_class)
 
-	if class_view_action_list(selected_class) == "4":
+	if selected_class.class_view_action_list() == "4":
 		main()
-	
+
 if __name__ == "__main__":
 	main()
