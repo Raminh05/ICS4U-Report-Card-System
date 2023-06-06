@@ -16,13 +16,14 @@ def course_table(selected_course):
 	table.set_cols_dtype(["t", "t", "t", "t", "t"])
 	table.set_cols_align(["c", "c", "c", "c", "c"])
 	table.set_cols_valign(["m", "m", "m", "m", "m"])
-	table.header(["", "Student ID", "First name", "Last name", "Course average"])
+	table.header(["", "Student ID", "First name", "Last name", "Student average"])
 	for count, student in enumerate(selected_course.students):
 		table.add_row([count, student.id, student.firstname, student.lastname, student.mark])
 	print(table.draw())
 	
 def individual_student_table(student):
 	clearConsole()
+	print("Student Name: " + student.firstname + " " + student.lastname + "\n" + "Student Average: " + str(student.mark) + "%")
 	table = texttable.Texttable()
 	table.set_cols_dtype(["t", "t"])
 	table.set_cols_align(["c", "c"])
