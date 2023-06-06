@@ -25,7 +25,7 @@ class Student(Person):
 	# Calculate student's average
 	def average(self) -> None:
 		if len(self.assignments.values()) == 0:
-			self.mark = None
+			self.mark = 0
 		else:
 			self.mark = round(mean(self.assignments.values()), 1)
 	
