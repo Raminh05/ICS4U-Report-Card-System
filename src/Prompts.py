@@ -15,12 +15,12 @@ def class_selection(master_dict):
 	return master_dict[selected_class]
 
 def class_view_action_list(selected_course):
-		print("1. Add New Student\n2. View/Edit Student\n3. Delete Student From Class\n4. Quit Program")
+		print("1. Add New Student\n2. View/Edit Student\n3. Delete Student From Class\n4. Return to class selection\n5. Quit Program")
 
 		selected_action = inquirer.number(
 				message="What action do you want to do? (Enter in student's displayed list number)",
 				min_allowed = 1,
-				max_allowed = 4,
+				max_allowed = 5,
 				validate = EmptyInputValidator(),
 			).execute()
 		
@@ -32,6 +32,8 @@ def class_view_action_list(selected_course):
 			case "3":
 				selected_course.remove_student()
 			case "4":
+				class_selection()
+			case "5":
 				quit()
 	
 
