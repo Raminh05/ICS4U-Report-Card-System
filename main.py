@@ -10,7 +10,9 @@ clearConsole()
 def main():
 	selected_class = class_selection(master_dict)
 	course_table(selected_class)
-	print(selected_class)
+
+	if class_view_action_list(selected_class) == "4":
+		main()
 	
 if __name__ == "__main__":
 	main()

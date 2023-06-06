@@ -18,7 +18,7 @@ def class_view_action_list(selected_course):
 		print("1. Add New Student\n2. View/Edit Student\n3. Delete Student From Class\n4. Return to class selection\n5. Quit Program")
 
 		selected_action = inquirer.number(
-				message="What action do you want to do? (Enter in student's displayed list number)",
+				message="What action do you want to do? (Enter in displayed list number)",
 				min_allowed = 1,
 				max_allowed = 5,
 				validate = EmptyInputValidator(),
@@ -32,7 +32,7 @@ def class_view_action_list(selected_course):
 			case "3":
 				selected_course.remove_student()
 			case "4":
-				class_selection()
+				return "4"
 			case "5":
 				quit()
 	

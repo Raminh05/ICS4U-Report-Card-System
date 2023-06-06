@@ -9,14 +9,9 @@ def clearConsole():
     elif osType == "Windows":
         os.system("cls")
 
-<<<<<<< Updated upstream
 def course_table(selected_course):
 	clearConsole()
-=======
-def course_table(selected_course: Course):
-	clearConsole()
 	print("Course name: "+selected_course.course_name+"\nCourse Code: "+selected_course.course_code+"\nTeacher: "+str(selected_course.teacher)+"\nCourse average: "+str(selected_course.average))
->>>>>>> Stashed changes
 	table = texttable.Texttable()
 	table.set_cols_dtype(["t", "t", "t", "t", "t"])
 	table.set_cols_align(["c", "c", "c", "c", "c"])
@@ -25,13 +20,8 @@ def course_table(selected_course: Course):
 	for count, student in enumerate(selected_course.students):
 		table.add_row([count, student.id, student.firstname, student.lastname, student.mark])
 	print(table.draw())
-	class_view_action_list(selected_course)
-
-<<<<<<< Updated upstream
+	
 def individual_student_table(student):
-=======
-def individual_student_table():
->>>>>>> Stashed changes
 	clearConsole()
 	table = texttable.Texttable()
 	table.set_cols_dtype(["t", "t"])
