@@ -133,6 +133,7 @@ class Course():
         choices=[
             "Add New Student",
             "View/Edit Student",
+            "Sort Student Data",
 	    	"Delete Student From Class",
 		    "Add an Assignment to all Students in Class",
 		    "Return to Class Selection",
@@ -147,8 +148,34 @@ class Course():
 			case "Add New Student":
 				self.add_student()
 			case "View/Edit Student":
-					self.view_edit_student()
-					self.write_to_json()
+				self.view_edit_student()
+				self.write_to_json()
+			case "Sort Student Data":
+				sorts = inquirer.select(
+					message="Select an action:",
+					choices=[
+						"Sort by first name (A-Z)",
+						"Sort by first name (Z-A)",
+						"Sort by last name (A-Z)",
+						"Sort by last name (Z-A)",
+						"Sort by course average (descending)",
+						"Sort by course average (ascending)",
+					],
+					default=None,
+				).execute()
+				match sorts:
+					case "Sort by first name (A-Z)":
+						self.firstname_sort(reverse_sort = False)
+					case "Sort by first name (Z-A)":
+						self.firstname_sort(reverse_sort = True)
+					case "Sort by last name (A-Z)":
+						self.lastname_sort(reverse_sort = False)
+					case "Sort by last name (Z-A)":
+						self.lastname_sort(reverse_sort = True)
+					case "Sort by course average (ascending)":
+						self.mark_sort(reverse_sort = False)
+					case "Sort by course average (descending)":
+						self.mark_sort(reverse_sort = True)
 			case "Delete Student From Class":
 				self.remove_student()
 			case "Add an Assignment to all Students in Class":
@@ -211,3 +238,13 @@ class Course():
 			self.average = round(sum / len(self.students), 1)
 		else:
 			self.average = 0
+	
+	def mark_sort(self, reverse_sort):
+		self.students.sort(key=lambda student: student.mark, reverse = reverse_sort)
+	
+	def firstname_sort(self, reverse_sort):
+		self.students.sort(key=lambda student: student.firstname, reverse = reverse_sort)
+	
+	def lastname_sort(self, reverse_sort):
+		self.students.sort(key=lambda student: student.lastname, reverse = reverse_sort)
+
