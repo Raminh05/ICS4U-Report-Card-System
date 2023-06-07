@@ -8,12 +8,13 @@
 - Python (for everything else)
 
 ## Tools used
-- PyQT (graphical library)
+- PyInquirer (fancy inputs lol)
+- Textable (to format report card information in the form of ASCII tables for the CLI)
 - Custom JSON parser
 - Custom everything else
 
 ## Progress
 - [x] Backend implementation for data structure
 - [x] Implmentation of JSON database to save student information
-- [ ] Setup a basic GUI for data viewing and entrance
+- [x] Setup a basic GUI for data viewing and entrance
 
