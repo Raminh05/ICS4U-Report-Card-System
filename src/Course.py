@@ -27,7 +27,7 @@ class Course():
 		""" Provides a string representation of a course object"""
 		return f'Course({self.course_code}, {self.course_name}, {self.teacher}, {self.students})'
 
-	# I tried to convert the entirety of the course class into a dictionary (so that I can write it into the json) :skull: (__dict__ doesn't work)
+	# I tried to convert the entirety of the course class into a dictionary (so that I can write it into the json) :skull: (POTENTIALLY CLEAN THIS UP WITH Object.__DICT__)
 	def write_to_json(self) -> None:
 		# Before writing class to json, update class average
 		self.class_average() 
