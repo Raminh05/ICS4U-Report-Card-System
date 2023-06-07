@@ -1,16 +1,17 @@
 from statistics import mean
 
+## -- Person superclass that contains firstname and lastname for all persons (since we all have names) -- ##
 class Person():
-	def __init__(self, firstname: str, lastname: str):
+	def __init__(self, firstname: str, lastname: str) -> None:
 		self.firstname = firstname
 		self.lastname = lastname
 	
 ## -- Simple sub class for teachers -- ##    
 class Teacher(Person):
-	def __init__(self, firstname: str, lastname: str):
+	def __init__(self, firstname: str, lastname: str) -> None:
 		super().__init__(firstname, lastname)
 	
-	def __repr__(self):
+	def __repr__(self) -> str:
 		return f'{self.firstname} {self.lastname}'
 
 ## -- Student subclass inherit first and last names from Person class -- ##
@@ -34,8 +35,10 @@ class Student(Person):
 		self.assignments[assignment_name] = assignment_mark
 		self.average()
 	
-	def remove_assignment(self, assignment_name: str):
+	# "Local" student implementation of the remove assignment function where details such as assignment grades can be adjusted for each student
+	def remove_assignment(self, assignment_name: str) -> None:
 		del self.assignments[assignment_name]
+		self.average()
 
 	# Returns a representation of the student object
 	def __repr__(self) -> str:
