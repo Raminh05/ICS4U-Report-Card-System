@@ -1,7 +1,7 @@
 # ICS4U-Report-Card-System
 
 ## What is it?
- Custom-made digital markbook solution made using PyQT for our final CS project :hot_face:
+ Custom-made (and lightweight) digital markbook solution made using a CLI for our final CS project :hot_face:
 
 ## Languages used
 - JSON (for the database)
