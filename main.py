@@ -1,6 +1,5 @@
 from src.Prompts import *
 from src.Views import *
-import src.Sorts
 from src.Course import Course
 from src.People import Teacher
 

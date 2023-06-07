@@ -247,4 +247,3 @@ class Course():
 	
 	def lastname_sort(self, reverse_sort):
 		self.students.sort(key=lambda student: student.lastname, reverse = reverse_sort)
-
