@@ -122,6 +122,7 @@ class Course():
 					
 				elif action == "Edit Assignment Mark":
 					selected_student.assignments[assignment_name] = int(input(f"Enter in the new mark for {assignment_name}: "))
+					selected_student.average()
 				
 		individual_student_table(selected_student)
 		
