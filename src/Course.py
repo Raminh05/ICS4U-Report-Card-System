@@ -90,7 +90,7 @@ class Course():
 		match action:
 			case "Add Assignment":
 				assignment_name = inquirer.text(message = "Enter in assignment name: ").execute()
-				assignment_mark = int(inquirer.text(message = "Enter in assignment mark: ").execute())
+				assignment_mark = float(inquirer.text(message = "Enter in assignment mark: ").execute())
 				selected_student.add_assignment(assignment_name, assignment_mark)
 				
 			case "Edit Student Info":
