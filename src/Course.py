@@ -186,7 +186,7 @@ class Course():
 				self.write_to_json()
 			case "Exit":
 				self.write_to_json()
-				quit()
+				raise SystemExit("Goodbye!") # quits program
 		
 		course_table(self)
 		self.class_view_action_list()
@@ -198,7 +198,7 @@ class Course():
 			min_allowed = 0,
 			max_allowed = len(self.students) - 1,
 			validate = EmptyInputValidator(),
-		).execute(0)
+		).execute()
 
 		self.students.remove(self.students[int(index)])
 		
