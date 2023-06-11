@@ -4,6 +4,7 @@ from src.DecryptJson import decrypt_json
 
 # If code 1 is returned because the course does not yet exist in the database, prompt user to make new course in main.py 
 def class_selection() -> tuple:
+	"""Prompt to select which class you want to access"""
 	master_dict = decrypt_json(load_data())
 	selectables = {}
 	for key in list(master_dict.keys()):
