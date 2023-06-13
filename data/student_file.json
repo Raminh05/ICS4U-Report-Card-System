@@ -1,56 +1,173 @@
 {
-    "ICS4U": {
-        "Course name": "Grade 12 Computer Science",
-        "Teacher": "Jennifer Medd",
-        "Class average": null,
-        "Students": {
-            "Kelvin Hall": {
-                "First name": "Kelvin",
-                "Last name": "Hall",
-                "Student ID": 362981425,
-                "Mark": 95,
-                "Student marks": {
-                    "Assignment 1": 93,
-                    "Assignment 2": 97
-                }
-            },
-            "Minh Nguyen": {
-                "First name": "Minh",
-                "Last name": "Nguyen",
-                "Student ID": 363084575,
-                "Mark": 98,
-                "Student marks": {
-                    "Assignment 1": 97,
-                    "Assignment 2": 99
-                }
-            }
+  "ICS4U": {
+    "Course name": "Grade 12 Computer Science",
+    "Teacher": "Jennifer Medd",
+    "Class average": null,
+    "Students": {
+      "Kelvin Hall": {
+        "First name": "Kelvin",
+        "Last name": "Hall",
+        "Student ID": 362981425,
+        "Mark": 95,
+        "Student marks": {
+          "Assignment 1": 93,
+          "Assignment 2": 96
         }
-    },
-    "SCH4U": {
-        "Course name": "Grade 12 Chemistry",
-        "Teacher": "Patrick Crewdson",
-        "Class average": 64,
-        "Students": {
-            "Kelvin Hall": {
-                "First name": "Kelvin",
-                "Last name": "Hall",
-                "Student ID": 362981425,
-                "Mark": 85,
-                "Student marks": {
-                    "Catalyst in Industry": 85,
-                    "Equilibrium Test": 85
-                }
-            },
-            "Minh Nguyen": {
-                "First name": "Minh",
-                "Last name": "Nguyen",
-                "Student ID": 363084575,
-                "Mark": 44,
-                "Student marks": {
-                    "Catalyst in Industry": 0,
-                    "Equilibrium Test": 89
-                }
-            }
+      },
+      "Minh Nguyen": {
+        "First name": "Minh",
+        "Last name": "Nguyen",
+        "Student ID": 363084575,
+        "Mark": 98,
+        "Student marks": {
+          "Assignment 1": 97,
+          "Assignment 2": 99
         }
+      },
+      "Emily Adams": {
+        "First name": "Emily",
+        "Last name": "Adams",
+        "Student ID": 363095467,
+        "Mark": 90,
+        "Student marks": {
+          "Assignment 1": 89,
+          "Assignment 2": 91
+        }
+      },
+      "John Smith": {
+        "First name": "John",
+        "Last name": "Smith",
+        "Student ID": 363098743,
+        "Mark": 92,
+        "Student marks": {
+          "Assignment 1": 95,
+          "Assignment 2": 89
+        }
+      },
+      "Sarah Johnson": {
+        "First name": "Sarah",
+        "Last name": "Johnson",
+        "Student ID": 363082591,
+        "Mark": 88,
+        "Student marks": {
+          "Assignment 1": 87,
+          "Assignment 2": 89
+        }
+      }
     }
+  },
+  "SCH4U": {
+    "Course name": "Grade 12 Chemistry",
+    "Teacher": "Patrick Crewdson",
+    "Class average": 64,
+    "Students": {
+      "Kelvin Hall": {
+        "First name": "Kelvin",
+        "Last name": "Hall",
+        "Student ID": 362981425,
+        "Mark": 85,
+        "Student marks": {
+          "Catalyst in Industry": 85,
+          "Equilibrium Test": 85
+        }
+      },
+      "Minh Nguyen": {
+        "First name": "Minh",
+        "Last name": "Nguyen",
+        "Student ID": 363084575,
+        "Mark": 44,
+        "Student marks": {
+          "Catalyst in Industry": 0,
+          "Equilibrium Test": 89
+        }
+      },
+      "Emma Roberts": {
+        "First name": "Emma",
+        "Last name": "Roberts",
+        "Student ID": 362979841,
+        "Mark": 78,
+        "Student marks": {
+          "Catalyst in Industry": 82,
+          "Equilibrium Test": 74
+        }
+      },
+      "Michael Thompson": {
+        "First name": "Michael",
+        "Last name": "Thompson",
+        "Student ID": 363092431,
+        "Mark": 92,
+        "Student marks": {
+          "Catalyst in Industry": 95,
+          "Equilibrium Test": 89
+        }
+      },
+      "Sophie Wilson": {
+        "First name": "Sophie",
+        "Last name": "Wilson",
+        "Student ID": 363098765,
+        "Mark": 80,
+        "Student marks": {
+          "Catalyst in Industry": 78,
+          "Equilibrium Test": 82
+        }
+      }
+    }
+  },
+  "MTH4U": {
+    "Course name": "Grade 12 Advanced Functions",
+    "Teacher": "Sarah Johnson",
+    "Class average": 82,
+    "Students": {
+      "Kelvin Hall": {
+        "First name": "Kelvin",
+        "Last name": "Hall",
+        "Student ID": 362981425,
+        "Mark": 91,
+        "Student marks": {
+          "Test 1": 90,
+          "Test 2": 92
+        }
+      },
+      "Minh Nguyen": {
+        "First name": "Minh",
+        "Last name": "Nguyen",
+        "Student ID": 363084575,
+        "Mark": 85,
+        "Student marks": {
+          "Test 1": 82,
+          "Test 2": 88
+        }
+      },
+      "Sophia Garcia": {
+        "First name": "Sophia",
+        "Last name": "Garcia",
+        "Student ID": 364028932,
+        "Mark": 95,
+        "Student marks": {
+          "Test 1": 97,
+          "Test 2": 93
+        }
+      },
+      "Daniel Wilson": {
+        "First name": "Daniel",
+        "Last name": "Wilson",
+        "Student ID": 363091278,
+        "Mark": 88,
+        "Student marks": {
+          "Test 1": 85,
+          "Test 2": 91
+        }
+      },
+      "Olivia Davis": {
+        "First name": "Olivia",
+        "Last name": "Davis",
+        "Student ID": 363099872,
+        "Mark": 92,
+        "Student marks": {
+          "Test 1": 90,
+          "Test 2": 94
+        }
+      }
+    }
+  }
 }

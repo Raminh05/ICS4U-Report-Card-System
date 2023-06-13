@@ -1,5 +1,5 @@
-from Course import Course
-from People import *
+from src.Course import Course
+from src.People import *
 
 # Decrypt json deserialzied output back into Course, Teacher, and Student objects	
 def decrypt_json(master_dict: dict) -> list:
